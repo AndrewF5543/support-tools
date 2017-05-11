@@ -11,11 +11,14 @@ echo "/* Getting system uptime ***********************************************/"
 uptime
 echo "/* Getting status of auditd ********************************************/"
 service auditd status
-echo "/* Getting TS agent version ********************************************/"
-sudo cloudsight version
-echo "/* Getting CloudSight status *******************************************/"
-sudo cloudsight status
-echo "/* cat /opt/threatstack/cloudsight/config/config.json ******************/"
-sudo cat /opt/threatstack/cloudsight/config/config.json
-echo -e "\n"
+if hash /usr/bin/lsb_release 2>/dev/null; then
+    echo "/* lsb_release *****************************************************/"
+    /usr/bin/lsb_release -a
+fi
+echo "/* /proc/stat **********************************************************/"
+cat /proc/stat
+echo "/* /proc/net/dev *******************************************************/"
+cat /proc/net/dev
+echo "/* /proc/meminfo *******************************************************/"
+cat /proc/meminfo
 echo "/* Done gathering system information ***********************************/"
