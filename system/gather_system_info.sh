@@ -9,9 +9,12 @@ echo "/* Getting OS version **************************************************/"
 cat /etc/issue
 echo "/* Getting system uptime ***********************************************/"
 uptime
-echo "/* Getting status of auditd ********************************************/"
-service auditd status
-if hash /usr/bin/lsb_release 2>/dev/null; then
+if hash service 2>/dev/null; then
+    echo "/* Getting status of auditd ****************************************/"
+    service auditd status
+fi
+if [ -e /usr/bin/lsb_release ]
+then
     echo "/* lsb_release *****************************************************/"
     /usr/bin/lsb_release -a
 fi
