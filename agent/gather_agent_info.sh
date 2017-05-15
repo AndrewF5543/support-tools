@@ -9,6 +9,9 @@ echo "/* cloudsight status ***************************************************/"
 /opt/threatstack/bin/cloudsight status
 echo "/* debug cloudsight status *********************************************/"
 DEBUG=cloudsight /opt/threatstack/bin/cloudsight status 2>&1
+# Make doubly sure we're back to non-debug
+unset DEBUG
+/opt/threatstack/bin/cloudsight status > /dev/null 2>&1
 if hash dpkg-query 2>/dev/null; then
     echo "/* dpkg-query -l | grep threatstack ********************************/"
     dpkg-query -l | grep threatstack
