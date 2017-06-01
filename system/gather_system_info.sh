@@ -3,6 +3,8 @@
 # Copyright (c) 2017 All Rights Reserved, http://www.threatstack.com
 echo "/* Gathering system information ****************************************/"
 
+echo "/* Hostname ************************************************************/"
+hostname
 echo "/* Getting kernel version **********************************************/"
 uname -a
 echo "/* Getting OS version **************************************************/"
