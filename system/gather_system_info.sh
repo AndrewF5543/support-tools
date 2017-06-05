@@ -20,6 +20,11 @@ then
     echo "/* lsb_release *****************************************************/"
     /usr/bin/lsb_release -a
 fi
+if [ -e /etc/os-release ]
+then
+    echo "/* os-release *****************************************************/"
+    cat /etc/os-release
+fi
 echo "/* /proc/stat **********************************************************/"
 cat /proc/stat
 echo "/* /proc/net/dev *******************************************************/"
