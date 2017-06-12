@@ -1,12 +1,18 @@
-# support-tools
-Tools to help with the support of Threat Stack
+Threat Stack Support Tools
 
-USAGE:
-Option 1: Check out this branch on GitHub, and run 'diagnostics.sh'
-Option 2: Download diagnostics.sh manually, along with the contents of each of the folders. IMPORTANT: When you download these files, make sure that the directory structure remains the same as in GitHub.
+You have two options for using this support tool:
+# Check out this branch on Github and run `diagnostics.sh`
+# Download `diagnostics.sh` manually with the contents of each of the folders
 
-'diagnostics.sh' is a master script which, when run, gathers information about the system it is run on. It calls the following child scripts:
-	'gather_system_info.sh' runs a series of commands which return some basic information about the host system, such as OS version, kernel version, and system uptime
-	'gather_docker_info.sh' runs a series of commands which first check whether docker is installed, and then returns some information about Docker if it's located
+**IMPORTANT!** If you choose to download `diagnostics.sh` and the folders manually, confirm that the file directory structure remains the same as in Github.
 
-For each of these scripts, diagnostics.sh tees the output to a file in /opt/threatstack/cloudsight/logs. Then, it calls 'tar_logs.sh', which tars that directory together (excluding tsaudit logs). The resulting file is saved in your current working directory. From there, please send that file to Threat Stack. If you wish, you may encrypt the files with support.pub, which is included in the repository as well.
+## Master Script Overview
+
+Running the `diagnostics.sh` master script gathers system information. It calls the following child scripts and runs a series of commands that:
+- `gather_system_info.sh`: returns information about the host system (such as OS version, kernel version, and system uptime)
+- `gather_agent_info.sh`: returns information about the agent installed on the host system (such as agent version, the output of `cloudsight status`, and the contents of `config.json`)
+- `gather_docker_info.sh`: returns information if Docker is installed and located
+
+The result for each of these scripts, `diagnostics.sh` outputs to a file in `/opt/threatstack/cloudsight/logs`. Then it calls `tar_logs.sh` that tars that directory together, excluding `tsaudit` logs. The resulting file saves in your current working directory in .tar.gz format, named `ts_logs_<CURRENT_DATE>.tar.gz`. An example of the name `ts_logs_05-25-2017.tar.gz`.
+
+Send that file to Threat Stack. You can encrypt the files with `support.pub`, also located in the repository.
