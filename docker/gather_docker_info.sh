@@ -20,7 +20,13 @@ docker ps
 
 echo "/* Get a container ID **************************************************/"
 CID=`docker ps | tail -n 1 | awk '{print $1}'`
-echo $CID
+if [ "$CID" = "CONTAINER" ]
+then
+    echo "No containers running!"
+    exit
+else
+    echo $CID
+fi
 if hash nc 2>/dev/null; then
     echo "/* Docker json *****************************************************/"
     echo -e "GET /v1.20/containers/${CID}/json HTTP/1.1\r\nHost:\r\n" | nc -U /var/run/docker.sock

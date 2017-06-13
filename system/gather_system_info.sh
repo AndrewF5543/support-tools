@@ -7,6 +7,8 @@ echo "/* Hostname ************************************************************/"
 hostname
 echo "/* Getting kernel version **********************************************/"
 uname -a
+echo "/* Kernel command line *************************************************/"
+cat /proc/cmdline
 echo "/* Getting OS version **************************************************/"
 cat /etc/issue
 echo "/* Getting system uptime ***********************************************/"
