@@ -17,7 +17,11 @@ echo "/* cat /var/lib/docker/containers/*/config* ****************************/"
 cat /var/lib/docker/containers/*/config*
 echo "/* docker ps ***********************************************************/"
 docker ps
-
+if [ -e /etc/docker/daemon.json ]
+then
+    echo "/* docker daemon config ********************************************/"
+    cat /etc/docker/daemon.json
+fi
 echo "/* Get a container ID **************************************************/"
 CID=`docker ps | tail -n 1 | awk '{print $1}'`
 if [ "$CID" = "CONTAINER" ]

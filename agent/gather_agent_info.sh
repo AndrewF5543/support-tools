@@ -19,8 +19,10 @@ fi
 echo "/* cat /opt/threatstack/cloudsight/config/config.json ******************/"
 sudo cat /opt/threatstack/cloudsight/config/config.json
 echo -e "\n"
-echo "/* host app.threatstack.com ********************************************/"
-host app.threatstack.com
+if hash host 2>/dev/null; then
+    echo "/* host app.threatstack.com ****************************************/"
+    host app.threatstack.com
+fi
 echo "/* ll opt **************************************************************/"
 ls -l /opt
 echo "/* ll opt threatstack **************************************************/"
