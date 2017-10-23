@@ -12,7 +12,7 @@ if hash dpkg-query 2>/dev/null; then
     dpkg-query -l | grep threatstack
 fi
 echo "/* cat /opt/threatstack/cloudsight/config/config.json ******************/"
-sudo cat /opt/threatstack/cloudsight/config/config.json
+cat /opt/threatstack/cloudsight/config/config.json
 echo -e "\n"
 if hash host 2>/dev/null; then
     echo "/* host app.threatstack.com ****************************************/"
