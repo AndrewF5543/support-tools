@@ -4,7 +4,5 @@
 echo "/* Tarring log files ***************************************************/"
 current_date="$(date +'%m-%d-%Y')"
 name=ts_logs_$(hostname)_${current_date}
-ln -s /opt/threatstack/cloudsight/logs ${name}
-tar --exclude tsaudit* -cvzf ${name}.tar.gz ${name}/* || true
-rm ${name}
+tar -czvf ${name}.tar.gz -C /tmp/ threatstack_diagnostics/*
 echo "/* Done tarring log files **********************************************/"
